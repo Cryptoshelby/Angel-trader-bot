@@ -198,3 +198,12 @@ let ra = 0;
 bot.on('polling_error', async (e) => {
     if (e.code === 'EFATAL' || e.code === 'ECONNABORTED') { ra++; if (ra <= 10) { await bot.stopPolling(); await new Promise(r => setTimeout(r, ra * 5000)); await bot.startPolling(); } }
 });
+// Puerto falso para Render
+const http = require('http');
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Bot funcionando');
+});
+server.listen(process.env.PORT || 3000, () => {
+  console.log('Puerto abierto para Render');
+});
