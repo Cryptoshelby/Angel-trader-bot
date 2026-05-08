@@ -100,7 +100,7 @@ async function enviarSenal() {
         await bot.sendPhoto(CANAL_SENALES, graficoUrl, { caption: mensaje, parse_mode: 'Markdown' });
         
         // OPERAR AUTOMÁTICAMENTE
-        exec('python3 ~/API-Quotex/pyquotex/operar.py ' + par + ' ' + dir, { timeout: 10000 }, (error, stdout) => {
+        exec('python3 ~/bot-telegram/operar.py ' + par + ' ' + dir, { timeout: 10000 }, (error, stdout) => {
             if (error) console.log('Error operando:', error.message);
             else console.log('Operación:', stdout);
         });
